@@ -2,9 +2,11 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from dotenv import load_dotenv
-load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.env'))
-
+try:
+    from dotenv import load_dotenv
+    load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.env'))
+except ImportError:
+    pass
 
 import streamlit as st
 
