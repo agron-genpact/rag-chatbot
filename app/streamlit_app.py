@@ -5,7 +5,12 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from dotenv import load_dotenv
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.env'))
 
+
 import streamlit as st
+
+# Override with Streamlit secrets if available (for cloud deployment)
+if 'OPENAI_API_KEY' in st.secrets:
+    os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 
 # Choose ONE retriever:
 from rag.retriever.vector_retriever import VectorRetriever
